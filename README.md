@@ -1,4 +1,7 @@
 # 📚 Bookshelf API
+
+> This project is a submission for the **"Belajar Membuat Aplikasi Back-End untuk Pemula"** course at **Dicoding Indonesia**.
+
 A lightweight API designed to manage your personal book collection. This project allows users to store, retrieve, update, and delete book data efficiently.
 
 ## 🚀 Key Features
