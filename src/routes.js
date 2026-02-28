@@ -17,6 +17,6 @@ router.get('/books/:id', getBookById)
 router.put('/books/:id', updateBookById)
 
 // Delete book route
-router.delete('/book/:id', deleteBookById)
+router.delete('/books/:id', deleteBookById)
 
 export default router
