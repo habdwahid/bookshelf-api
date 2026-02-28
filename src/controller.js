@@ -141,7 +141,7 @@ const deleteBookById = (req, res) => {
 
   // Check if book found
   if (index !== -1) {
-    books.slice(index, 1)
+    books.splice(index, 1)
 
     return res.json({
       status: 'success',
@@ -151,7 +151,7 @@ const deleteBookById = (req, res) => {
 
   // Otherwise return fail
   return res.status(404).json({
-    status: 'success',
+    status: 'fail',
     message: 'Buku gagal dihapus. Id tidak ditemukan'
   })
 }
