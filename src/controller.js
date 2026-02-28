@@ -102,10 +102,10 @@ const updateBookById = (req, res) => {
   const updatedAt = new Date().toISOString()
 
   // Check if name is empty
-  if (!name) return res.status(400).json({status: 'fail', message: 'Gagal menambahkan buku. Mohon isi nama buku'})
+  if (!name) return res.status(400).json({status: 'fail', message: 'Gagal memperbarui buku. Mohon isi nama buku'})
 
   // Check if readPage greater than pageCount
-  if (readPage > pageCount) return res.status(400).json({status: 'fail', message: 'Gagal menambahkan buku. readPage tidak boleh lebih besar dari pageCount'})
+  if (readPage > pageCount) return res.status(400).json({status: 'fail', message: 'Gagal memperbarui buku. readPage tidak boleh lebih besar dari pageCount'})
 
   // Find book index
   const index = books.findIndex((book) => book.id === id)
