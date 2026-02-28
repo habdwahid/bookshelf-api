@@ -7,6 +7,53 @@ import {books} from './books.js'
  * @returns {JSON} books
  */
 const getBooks = (req, res) => {
+  const {name, reading, finished} = req.query
+
+  if (name) {
+    const searchBooks = books.filter((book) => book.name.toLowerCase().includes(name.toLowerCase()))
+
+    return res.json({
+      status: 'success',
+      data: {
+        books: searchBooks.map((book) => ({
+          id: book.id,
+          name: book.name,
+          publisher: book.publisher
+        }))
+      }
+    })
+  }
+
+  if (reading) {
+    const readingBooks = books.filter((book) => Number(book.reading) === Number(reading))
+
+    return res.json({
+      status: 'success',
+      data: {
+        books: readingBooks.map((book) => ({
+          id: book.id,
+          name: book.name,
+          publisher: book.publisher
+        }))
+      }
+    })
+  }
+  
+  if (finished) {
+    const finishedBooks = books.filter((book) => Number(book.finished) === Number(finished))
+    
+    return res.json({
+      status: 'success',
+      data: {
+        books: finishedBooks.map((book) => ({
+          id: book.id,
+          name: book.name,
+          publisher: book.publisher
+        }))
+      }
+    })
+  }
+
   return res.json({
     status: 'success',
     data: {
@@ -27,7 +74,7 @@ const getBooks = (req, res) => {
 const createBook = (req, res, next) => {
   const {name, year, author, summary, publisher, pageCount, readPage, reading} = req.body
   const id = nanoid(16)
-  const finished = false
+  const finished = readPage === pageCount ? true : false
   const insertedAt = new Date().toISOString()
   const updatedAt = insertedAt
 
